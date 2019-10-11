@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --disable-nls \
+    --without-perl
+
+make
+make DESTDIR="$1" install
+
+# Remove docs.
+rm -rf "$1/usr/share/docs"

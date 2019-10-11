@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+patch -p1 < iwd-no-dbus.patch
+
+sh
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+	--libexecdir=/usr/lib/iwd \
+	--localstatedir=/var \
+    --disable-dbus-policy \
+    --disable-systemd-service
+
+make
+make DESTDIR="$1" install
+

@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --disable-glusterfs \
+    --disable-debug-info \
+    --disable-bsd-user \
+    --disable-werror \
+    --disable-xen \
+    --disable-kvm \
+    --enable-gtk \
+    --disable-sdl \
+    --disable-smartcard \
+    --disable-docs \
+    --disable-debug-info \
+    --target-list=x86_64-softmmu
+
+make
+make DESTDIR="$1" install

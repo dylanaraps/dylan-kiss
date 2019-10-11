@@ -1,0 +1,3 @@
+https://ftp.figlet.org/pub/figlet/program/unix/figlet-2.2.5.tar.gz
+https://github.com/xero/figlet-fonts/archive/48ec2520ac5ea37a40bc68e1d965009072cc8e55.tar.gz fonts
+patches/musl-fix-cplusplus-decls.patch
