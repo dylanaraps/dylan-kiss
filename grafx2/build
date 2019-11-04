@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+sed -i 's/defined(__macosx__)/!defined(__GLIBC__)/' src/init.c
+
+(cd 3rdparty/archives; mv recoil-4.3.1.tar.gz\?no recoil-4.3.1.tar.gz)
+
+make NOLUA=1 NOTTF=1 API=sdl2 PREFIX=/usr
+make -C src NOLUA=1 NOTTF=1 DESTDIR="$1" API=sdl2 PREFIX=/usr install
