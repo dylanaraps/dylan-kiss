@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+# Remove startup-notification dependency.
+sed -i'' 's/as_fn_error.*up-no.*/: "/' configure
+patch -p1 < i3-no-libsn.patch
+
+./configure \
+    --prefix=/usr \
+    --disable-docs \
+    --disable-builddir
+
+# Remove startup-notification dependency.
+sed -i'' '/LIBSN/d' Makefile
+
+make
+make DESTDIR="$1" install
