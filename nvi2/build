@@ -1,0 +1,34 @@
+#!/bin/sh -e
+
+: > util.h
+
+export CFLAGS="$CFLAGS -D_GNU_SOURCE"
+export CFLAGS="$CFLAGS -include /usr/include/stdint.h"
+export CFLAGS="$CFLAGS -include /usr/include/sys/types.h"
+export CFLAGS="$CFLAGS -include /usr/include/sys/ioctl.h"
+export CFLAGS="$CFLAGS -Du_int32_t=uint32_t"
+export CFLAGS="$CFLAGS -Du_int16_t=uint16_t"
+export CFLAGS="$CFLAGS -Du_int8_t=uint8_t"
+export CFLAGS="$CFLAGS -Du_long=u_long"
+export CFLAGS="$CFLAGS -DTCSASOFT=0"
+export CFLAGS="$CFLAGS -DEFTYPE=79"
+export CFLAGS="$CFLAGS -ldb"
+
+grep -lr st_mtimespec . | while read -r line; do
+    sed -i 's/st_mtimespec/st_mtim/g' "$line"
+done
+
+sed -i 's/dp->d_namlen/strlen(dp->d_name)/g' ex/ex_argv.c
+sed -i 's/<db.h>/<db_185.h>/' common/common.h
+
+cd build
+
+cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_ICONV:Bool=False \
+    -G "Unix Makefiles"
+
+make
+
+install -Dm755 nvi "$1/usr/bin/nvi"
