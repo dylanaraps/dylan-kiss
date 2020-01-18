@@ -15,7 +15,7 @@ meson \
     --localstatedir=/var \
     --buildtype=release \
     -Dgallium-nine=false \
-    -Ddri-drivers="" \
+    -Ddri-drivers="swrast,i965" \
     -Dgallium-drivers="i915" \
     -Dvulkan-drivers="intel" \
     -Dplatforms=x11,drm \
