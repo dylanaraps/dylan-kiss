@@ -1,0 +1,16 @@
+bzip2
+expat
+libX11
+libXau
+libXdamage
+libXext
+libXfixes
+libXrender
+libXxf86vm
+libdrm
+libpng
+libxcb
+libxshmfence
+mesa
+pixman
+zlib

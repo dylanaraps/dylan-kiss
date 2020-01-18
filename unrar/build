@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-export LDFLAGS="$LDFLAGS -pthread"
-
-make
-
-install -Dm 755 unrar "$1/usr/bin/unrar"

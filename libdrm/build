@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --disable-valgrind \
+    --disable-radeon \
+    --disable-amdgpu \
+    --disable-nouveau
+
+make
+make DESTDIR="$1" install

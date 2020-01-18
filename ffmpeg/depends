@@ -1,0 +1,13 @@
+pkgconf make
+perl make
+yasm make
+alsa-lib
+lame
+libass
+libogg
+libvorbis
+libwebp
+libvpx
+opus
+x264
+x265
