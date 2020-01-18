@@ -12,5 +12,4 @@ libpng
 libxcb
 libxshmfence
 mesa
-pixman
 zlib
