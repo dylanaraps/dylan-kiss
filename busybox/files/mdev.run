@@ -1,2 +1,1 @@
-#!/bin/sh
-exec mdev -df
+/home/goldie/projects/kiss-new/core/busybox/files/mdev.run

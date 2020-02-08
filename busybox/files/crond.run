@@ -1,2 +1,1 @@
-#!/bin/sh
-exec crond -f
+/home/goldie/projects/kiss-new/core/busybox/files/crond.run
