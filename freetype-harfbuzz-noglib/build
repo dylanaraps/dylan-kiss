@@ -7,7 +7,7 @@ build_freetype() (
     ./configure \
         --prefix=/usr \
         --enable-freetype-config \
-        --without-glib \
+        --with-glib=auto \
         --with-harfbuzz="$2"
 
     make

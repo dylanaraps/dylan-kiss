@@ -1,8 +1,0 @@
-autoconf make
-automake make
-libevent
-libressl
-libssh
-msgpack
-ncurses
-zlib

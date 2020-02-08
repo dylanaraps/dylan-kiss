@@ -1,2 +1,2 @@
-https://dl.suckless.org/st/st-0.8.2.tar.gz
+git+https://git.suckless.org/st
 files/config.h

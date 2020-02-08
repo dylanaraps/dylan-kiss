@@ -27,12 +27,6 @@ char *vtiden = "\033[?6c";
 static float cwscale = 1.0;
 static float chscale = 1.0;
 
-/*
- * word delimiter string
- *
- * More advanced example: " `'\"()[]{}"
- */
-char *worddelimiters = " ";
 
 /* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 300;
@@ -40,6 +34,13 @@ static unsigned int tripleclicktimeout = 600;
 
 /* alt screens */
 int allowaltscreen = 1;
+
+/*
+ * word delimiter string
+ *
+ * More advanced example: " `'\"()[]{}"
+ */
+wchar_t *worddelimiters = L" ";
 
 /* frames per second st should at maximum draw to the screen */
 static unsigned int xfps = 5000;
@@ -149,6 +150,8 @@ static unsigned int mousebg = 0;
  * doesn't match the ones requested.
  */
 static unsigned int defaultattr = 11;
+
+static uint forcemousemod = ShiftMask;
 
 /*
  * Internal mouse shortcuts.

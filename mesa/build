@@ -14,11 +14,11 @@ meson \
     --mandir=/usr/share/man \
     --localstatedir=/var \
     --buildtype=release \
-    -Dgallium-nine=false \
-    -Ddri-drivers="swrast,i965" \
-    -Dgallium-drivers="i915" \
-    -Dvulkan-drivers="intel" \
     -Dplatforms=x11,drm \
+    -Ddri-drivers=i965 \
+    -Dgallium-drivers=i915 \
+    -Dvulkan-drivers=intel \
+    -Dprefer-iris=true \
     . output
 
 ninja -C output
