@@ -1,18 +1,1 @@
-bison        make
-expat
-flex         make
-libX11
-libXdamage
-libXext
-libXrandr
-libXrender
-libXxf86vm
-libdrm
-libelf
-libxcb
-libxshmfence
-meson        make
-python       make
-python-mako  make
-xorgproto
-zlib
+/home/dylan/projects/repo/extra/mesa/depends

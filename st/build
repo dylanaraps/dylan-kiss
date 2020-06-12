@@ -2,6 +2,3 @@
 
 make
 make PREFIX=/usr DESTDIR="$1" install
-
-mkdir -p "$1/etc/test/test2/test3"
-: > "$1/etc/test/test2/test3/file"

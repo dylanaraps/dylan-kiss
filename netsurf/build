@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+for p in html-parser html-tagset; do (
+    cd "$p"
+
+    perl Makefile.PL INSTALLDIRS=vendor
+
+    make
+    make DESTDIR="$PWD/.." install
+) done
+
+make \
+    LIBDIR=lib \
+    INCLUDEDIR=include \
+    PREFIX=/usr \
+    TARGET=gtk3 \
+    PERL5LIB="$PWD/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi"
+
+make \
+    LIBDIR=lib \
+    INCLUDEDIR=include \
+    PREFIX=/usr \
+    TARGET=gtk3 \
+    DESTDIR="$1" \
+    install

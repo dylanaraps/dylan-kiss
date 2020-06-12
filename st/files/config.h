@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Roboto Mono:size=15:antialias=true:autohint=true";
-static int borderpx = 150;
+static char *font = "terminus:pixelsize=20";
+static int borderpx = 33;
 
 /*
  * What program is execed by st depends of these precedence rules:

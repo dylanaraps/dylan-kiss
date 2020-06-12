@@ -1,0 +1,55 @@
+#!/bin/sh -e
+
+export CFLAGS="$CFLAGS -static -lssl -lcrypto"
+export CPPFLAGS="$CPPFLAGS -static -lssl -lcrypto"
+
+(
+    cd tokyocabinet
+
+    ./configure \
+        --prefix=/usr \
+        --disable-shared \
+        --enable-static \
+        --enable-off64 \
+        --disable-bzip \
+        --disable-zlib \
+        --enable-fastest
+
+    make
+    make DESTDIR="$PWD" install
+)
+
+(
+    cd cyrus-sasl
+
+    ./configure \
+        --prefix=/usr \
+        --disable-shared \
+        --enable-static \
+
+    make
+    make DESTDIR="$PWD" install
+)
+
+./configure \
+    ac_cv_lib_tokyocabinet_tcbdbopen=yes \
+    ac_cv_search_sasl_encode64="-lsasl2 -lssl -lcrypto" \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-pop \
+    --enable-imap \
+    --enable-smtp \
+    --enable-hcache \
+    --enable-sidebar \
+    --disable-nls \
+    --with-tokyocabinet="$PWD/tokyocabinet/usr/" \
+    --with-sasl="$PWD/cyrus-sasl/usr/" \
+    --without-lmdb \
+    --without-gdbm \
+    --without-bdb \
+    --with-sqlite3
+
+make
+make DESTDIR="$1" install
+
+rm -f "$1/etc/mime.types"

@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-sh >/dev/tty
-make
-make PREFIX=/usr DESTDIR="$1" install
